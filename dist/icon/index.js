@@ -1,0 +1,64 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+var _react = _interopRequireDefault(require("react"));
+var _propTypes = _interopRequireDefault(require("prop-types"));
+var _Icon = _interopRequireDefault(require("@mui/material/Icon"));
+var _CircularProgress = _interopRequireDefault(require("@mui/material/CircularProgress"));
+var _excluded = ["textIcon", "help", "timeout", "enterDelay", "color", "loading", "size", "sx"];
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+var defColor = ["action", "disabled", "primary", "secondary", "error", "info", "success", "warning"];
+var Default = function Default(props) {
+  var textIcon = props.textIcon,
+    help = props.help,
+    timeout = props.timeout,
+    enterDelay = props.enterDelay,
+    color = props.color,
+    loading = props.loading,
+    size = props.size,
+    sx = props.sx,
+    other = _objectWithoutProperties(props, _excluded);
+  if (loading) {
+    return /*#__PURE__*/_react["default"].createElement(_CircularProgress["default"], {
+      size: size,
+      sx: sx
+    });
+  }
+  var icon = /*#__PURE__*/_react["default"].createElement(_Icon["default"], _extends({}, other, {
+    color: defColor.includes(color) ? color : undefined,
+    sx: _objectSpread({
+      color: !defColor.includes(color) ? color : undefined,
+      fontSize: "".concat(size, "px !important"),
+      minWidth: size,
+      minHeight: size
+    }, sx)
+  }), textIcon);
+  return icon;
+};
+Default.propTypes = {
+  textIcon: _propTypes["default"].string.isRequired,
+  className: _propTypes["default"].string,
+  timeout: _propTypes["default"].number,
+  enterDelay: _propTypes["default"].number,
+  color: _propTypes["default"].string,
+  loading: _propTypes["default"].bool,
+  size: _propTypes["default"].number
+};
+Default.defaultProps = {
+  className: "material-symbols-rounded",
+  timeout: 600,
+  enterDelay: 1000,
+  loading: false,
+  size: 19
+};
+var _default = Default;
+exports["default"] = _default;
